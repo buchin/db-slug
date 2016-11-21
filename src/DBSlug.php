@@ -10,11 +10,14 @@ class DbSlug
 	private $slugify;
 	public function __construct($dsn = null, $user = null, $password = null)
 	{
-		if($dsn == null && $user == null && $password == null){
-			R::setup();
-		}
-		else{
-			R::setup($dsn, $user, $password);
+		if(!R::testConnection()){
+			
+			if($dsn == null && $user == null && $password == null){
+				R::setup();
+			}
+			else{
+				R::setup($dsn, $user, $password);
+			}
 		}
 
 		$this->slugify = new Slugify;
