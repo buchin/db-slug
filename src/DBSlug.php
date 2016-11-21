@@ -31,5 +31,7 @@ class DbSlug
 				}
 				R::store($item);
 			}
+
+			R::close();
 	}
 }
